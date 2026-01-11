@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gwanak-ml-api
+  labels:
+    app: gwanak-ml-api
+spec:
+  replicas: 2 # 고가용성을 위해 2개 실행
+  selector:
+    matchLabels:
+      app: gwanak-ml-api
+  template:
+    metadata:
+      labels:
+        app: gwanak-ml-api
+    spec:
+      containers:
+      - name: gwanak-ml-api
+        #image: ghcr.io/jarrodkim/gwanak-ml-api:latest # 푸시한 이미지 주소
+        image: ${IMAGE_URL}
+        ports:
+        - containerPort: 8000
+        resources:
+          requests:
+            memory: "512Mi"
+            cpu: "250m"
+          limits:
+            memory: "1Gi"
+            cpu: "500m"
+      imagePullSecrets:
+      - name: ghcr-secret

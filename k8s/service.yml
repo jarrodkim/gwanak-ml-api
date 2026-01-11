@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gwanak-ml-service
+spec:
+  type: LoadBalancer # AWS ELB 자동 생성
+  ports:
+  - port: 80
+    targetPort: 8000
+  selector:
+    app: gwanak-ml-api

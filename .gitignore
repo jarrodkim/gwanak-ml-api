@@ -1,0 +1,14 @@
+# Terraform 관련
+infrastructure/.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Python 관련
+**/__pycache__/
+venv/
+.env
+
+# OS 및 기타
+.DS_Store
+*.log
